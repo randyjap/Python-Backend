@@ -4,6 +4,6 @@ from django.template import loader
 
 # Create your views here.
 
-def index(request):
+def root(request):
     context = { }
-    return render(request, 'api/index.html', context)
+    return render(request, 'api/base.html', context)

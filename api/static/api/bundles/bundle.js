@@ -68,7 +68,7 @@
 	
 	document.addEventListener('DOMContentLoaded', function () {
 	  Modal.setAppElement(document.body);
-	  window.currentUser = { username: "Helllo" };
+	  window.currentUser = { username: "ANOTHER GUY" };
 	  var store = void 0;
 	  if (window.currentUser) {
 	    var preloadedState = { session: { currentUser: window.currentUser } };
