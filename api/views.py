@@ -15,17 +15,20 @@ def root(request):
 def test(request):
     # objs = User.objects.all()
     # jsondata = serializers.serialize('json', objs)
-    # return HttpResponse(jsondata, content_type='application/json')
-    jsondata = { }
+    array = []
     users = User.objects.all()
-    doctors = Doctor.objects.all()
     for user in users:
-        for doctor in doctors:
-            jsondata["doctor"] = doctor.first_name
+        jsondata = {}
+        appointments = user.appointment_set.all()
+        jsondata["appointments"] = []
+        for appointment in appointments:
+            jsondata["appointments"].append(appointment.time)
         jsondata["username"] = user.username
+        array.append(jsondata)
 
     # objs = Doctor.objects.all()
     # objs = Appointment.objects.all()
     # objs = Patient.objects.all()
 
-    return JsonResponse(jsondata)
+    # return HttpResponse(jsondata, content_type='application/json')
+    return JsonResponse(array, safe=False)
